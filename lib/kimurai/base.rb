@@ -198,6 +198,7 @@ module Kimurai
 
     def request_to(handler, delay = nil, url:, data: {}, response_type: :html)
       raise InvalidUrlError, "Requested url is invalid: #{url}" unless URI.parse(Addressable::URI.escape(url)).is_a?(URI::HTTP)
+      url = Addressable::URI.escape(url)
 
       if @config[:skip_duplicate_requests] && !unique_request?(url)
         add_event(:duplicate_requests) if self.with_info
