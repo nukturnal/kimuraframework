@@ -212,7 +212,7 @@ module Kimurai
       public_send(handler, browser.current_response(response_type), **options)
 
     rescue
-      logger.error "Spider: request_to: error: #{$!.inspect}"
+      logger.warn "Spider: request_to: error: #{$!.inspect}"
       return 
     end
 
